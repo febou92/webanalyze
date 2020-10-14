@@ -61,7 +61,6 @@ func NewWebAnalyzer(apps io.Reader, client *http.Client) (*WebAnalyzer, error) {
 		return nil, err
 	}
 
-	wa.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36")
 	wa.client = client
 	
 	return wa, nil
@@ -117,7 +116,7 @@ func fetchHost(host string, client *http.Client) (*http.Response, error) {
 		return nil, err
 	}
 	req.Header.Add("Accept", "*/*")
-
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36")
 	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err
